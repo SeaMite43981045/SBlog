@@ -1,0 +1,14 @@
+.post-content a {
+    color: aquamarine;
+}
+
+.post-content blockquote {
+    background-color: #00000022;
+    border-left: 4px solid #fff;
+    padding: 8px 16px;
+}
+
+.post-content code {
+    background-color: #00000066;
+    margin: 4px;
+}
