@@ -11,6 +11,7 @@ import 'github-markdown-css';
 import hljs from 'highlight.js/lib/common';
 import mermaidMarkdownIt from 'mermaid-it-markdown';
 import CommentComponent from '../components/CommentComponent.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 
 const markdownIt = new MarkdownIt({
   highlight: function (str, lang) {
@@ -54,6 +55,7 @@ markdownIt.use(mermaidMarkdownIt);
               </n-flex>
             <comment-component :id="post.id" />
             </n-flex>
+            <footer-component />
           </div>
         </div>
       </n-scrollbar>
@@ -131,6 +133,10 @@ body {
 .post-item-description {
     font-size: 18px;
     color: #FFFFFF;
+}
+
+.post-item-tag {
+  margin: 0 4px;
 }
 
 .startup {

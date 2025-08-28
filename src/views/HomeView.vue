@@ -17,6 +17,7 @@ import {
 import PostComponent from '../components/PostComponent.vue';
 import posts from '@/posts';
 import { ref } from 'vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 
 const marqueeSpeed = ref<number>(250)
 </script>
@@ -90,6 +91,7 @@ const marqueeSpeed = ref<number>(250)
         <n-flex class="post-container" align="center" justify="center" vertical style=" height: 100%; padding: 64px; margin: 0;background-color: #00000099; backdrop-filter: blur(16px);">
           <post-component v-for="(post, key) in posts.values()" :key="key" :id="post.id" :avatar="post.avatar" :title="post.title" :create_time="post.create_time" :description="post.description" :author="post.author" :tags="post.tags"/>
         </n-flex>
+        <footer-component />
       </n-scrollbar>
     </div>
 </template>
@@ -218,7 +220,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-
 @keyframes text-shadow {
   0% ,
   25% {

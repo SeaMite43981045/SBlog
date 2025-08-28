@@ -6,13 +6,14 @@ import {
     NThing,
     NAvatar
 } from 'naive-ui';
+import FooterComponent from '@/components/FooterComponent.vue';
 </script>
 
 <template>
     <div class="startup"></div>
     <div class="bg">
         <n-scrollbar>
-            <n-flex justify="center">
+            <n-flex justify="center" style="gap: 0;">
                 <div class="container">
                     <n-flex style="padding: 64px 128px;" vertical justify="center">
                         <router-link to="/" class="home-link">&lt; 返回主页</router-link>
@@ -33,6 +34,7 @@ import {
                         </n-flex>
                     </n-flex>
                 </div>
+                <footer-component />
             </n-flex>
         </n-scrollbar>
     </div>
@@ -50,7 +52,6 @@ import {
 .container {
   height: 100vh;
   width: 80vw;
-  position: absolute;
   backdrop-filter: blur(16px);
   background-color: #00000099;
 }
