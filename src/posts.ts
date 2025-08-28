@@ -18,7 +18,7 @@ posts.push({
     create_time: "2025/8/21 20:49",
     description: "尽力了...",
     author: "SeaMite43981045",
-    tags: ["normal"],
+    tags: ["project", "code"],
     content: await (await fetch('/post/post/01.md')).text()
 })
 
