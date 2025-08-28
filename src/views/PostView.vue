@@ -136,7 +136,7 @@ body {
 }
 
 .post-item-tag {
-  margin: 0 4px;
+  margin: 2px 4px;
 }
 
 .startup {

@@ -13,13 +13,13 @@ code.hljs {
 
 .hljs-doctag,
 .hljs-meta-keyword,
-.hljs-name,
 .hljs-strong {
   font-weight: bold
 }
 
 .hljs-literal,
 .hljs-section,
+.hljs-name,
 .hljs-bullet,
 .hljs-keyword {
     color: #3890D6;

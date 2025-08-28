@@ -21,7 +21,6 @@ posts.push({
     tags: ["link"],
     content: await (await fetch('/post/post/00.md')).text()
 })
-
 posts.push({
     id: "000000000001",
     avatar: "/post/cover/01.webp",
@@ -31,6 +30,16 @@ posts.push({
     author: "SeaMite43981045",
     tags: ["project", "code"],
     content: await (await fetch('/post/post/01.md')).text()
+})
+posts.push({
+    id: "000000000002",
+    avatar: "/post/cover/02.webp",
+    title: "Spigot教程 1 - HelloWorld!",
+    create_time: "2025/8/28 22:08",
+    description: "从零开始学习 Spigot",
+    author: "SeaMite43981045",
+    tags: ["project", "code", "Spigot", "Minecraft"],
+    content: await (await fetch('/post/post/02.md')).text()
 })
 
 export default posts;
