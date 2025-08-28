@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "./views/HomeView.vue";
 import PostView from "./views/PostView.vue";
+import LinksView from "./views/LinksView.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,6 +20,14 @@ const router = createRouter({
             component: PostView,
             meta: {
                 title: "Post"
+            }
+        },
+        {
+            name: 'LinksView',
+            path: '/links',
+            component: LinksView,
+            meta: {
+                title: "Links"
             }
         },
         {

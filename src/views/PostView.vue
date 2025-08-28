@@ -31,39 +31,50 @@ markdownIt.use(mermaidMarkdownIt);
 
 <template>
     <div class="startup"></div>
-    <n-scrollbar style="max-height: 100vh;">
-      <div v-for="(post, key) in posts" :key="key">
-        <div v-if="post.id == $route.params.id">
-          <n-flex class="post-bg" justify="center" align="start">
-            <n-flex class="post-page" justify="center" align="start" vertical>
-              <router-link to="/" class="post-home-link">&lt; 返回主页</router-link>
-              <n-flex justify="space-around">
-                <n-flex class="post-content-container" vertical justify="start">
-                      <n-text class="post-title">{{ post.title }}</n-text>
-                      <div class="post-content" v-html="markdownIt.render(post.content)"></div>
-                </n-flex>
-                <n-flex class="post-props" vertical justify="start">
-                  <n-avatar :src="post.avatar" :size="128"/>
-                  <n-text class="post-item-description">{{ post.description }}</n-text>
-                  <n-text class="post-props-text-info">作者：{{ post.author }}</n-text>
-                  <n-text class="post-props-text-info">创建日期：{{ post.create_time }}</n-text>
-                  <n-text class="post-props-text-info">标签：<n-tag :bordered="false" type="info" class="post-item-tag" v-for="(tag, index) in post.tags" :key="index">{{ tag }}</n-tag></n-text>
+    <div class="container">
+      <n-scrollbar style="max-height: 100vh;">
+        <div v-for="(post, key) in posts" :key="key">
+          <div v-if="post.id == $route.params.id">
+            <n-flex class="post-bg" justify="center" align="start">
+              <n-flex class="post-page" justify="center" align="start" vertical>
+                <router-link to="/" class="post-home-link">&lt; 返回主页</router-link>
+                <n-flex justify="space-around">
+                  <n-flex class="post-content-container" vertical justify="start">
+                        <n-text class="post-title">{{ post.title }}</n-text>
+                        <div class="post-content" v-html="markdownIt.render(post.content)"></div>
+                  </n-flex>
+                  <n-flex class="post-props" vertical justify="start">
+                    <n-avatar :src="post.avatar" :size="128"/>
+                    <n-text class="post-item-description">{{ post.description }}</n-text>
+                    <n-text class="post-props-text-info">作者：{{ post.author }}</n-text>
+                    <n-text class="post-props-text-info">创建日期：{{ post.create_time }}</n-text>
+                    <n-text class="post-props-text-info">标签：<n-tag :bordered="false" type="info" class="post-item-tag" v-for="(tag, index) in post.tags" :key="index">{{ tag }}</n-tag></n-text>
+                  </n-flex>
                 </n-flex>
               </n-flex>
+            <comment-component :id="post.id" />
             </n-flex>
-          <comment-component :id="post.id" />
-          </n-flex>
+          </div>
         </div>
-      </div>
-    </n-scrollbar>
+      </n-scrollbar>
+    </div>
 </template>
 
 <style scoped>
 body {
   background: url('/header-background.webp') no-repeat;
   background-size: 100% 100%;
+}
+
+.container {
+  background: url('/header-background.webp') no-repeat;
+  background-size: 100% 100%;
   margin: 0;
   padding: 0;
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1;
 }
 
 .code {
