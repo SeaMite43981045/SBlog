@@ -6,9 +6,7 @@ import {
   NText,
   NScrollbar,
   NButton,
-  NIcon,
-  NMarquee,
-  NImage
+  NIcon
 } from 'naive-ui';
 import {
   LogoGithub,
@@ -16,10 +14,8 @@ import {
 } from '@vicons/ionicons5';
 import PostComponent from '../components/PostComponent.vue';
 import posts from '@/posts';
-import { ref } from 'vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 
-const marqueeSpeed = ref<number>(250)
 </script>
 
 <template>
@@ -28,9 +24,7 @@ const marqueeSpeed = ref<number>(250)
       <n-scrollbar style="max-height: 100vh;">
         <div class="header-bg">
           <div class="header-container">
-            <n-marquee class="music-background-marquee" auto-fill :speed="marqueeSpeed">
-              <n-image preview-disabled lazy class="music-background" src="/music/cover/瓦合.webp" />
-            </n-marquee>
+            <div class="bar"></div>
             <n-flex class="header-page" justify="space-between" align="center" vertical>
               <n-flex class="center-container" vertical justify="center">
                 <n-flex style="padding: 60px 140px;">
@@ -83,9 +77,7 @@ const marqueeSpeed = ref<number>(250)
               </n-flex>
             </n-flex>
             
-            <n-marquee class="music-background-marquee" auto-fill :speed="marqueeSpeed">
-              <n-image preview-disabled lazy class="music-background" src="/music/cover/瓦合.webp" />
-            </n-marquee>
+            <div class="bar"></div>
           </div>
         </div>
         <n-flex class="post-container" align="center" justify="center" vertical style=" height: 100%; padding: 64px; margin: 0;background-color: #00000099; backdrop-filter: blur(16px);">
@@ -117,15 +109,15 @@ const marqueeSpeed = ref<number>(250)
   margin: 0;
   padding: 0;
   background-color: #000000;
+  backdrop-filter: blur(32px);
 }
 
 .music-background {
   margin: 0;
   padding: 0;
   height: 256px;
-  filter: blur(12px);
   background-color: #000000;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(32px);
   opacity: 0.7;
 }
 
@@ -219,6 +211,13 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.bar {
+  width: 100vw;
+  height: 360px;
+  background-color: #000000aa;
+  backdrop-filter: blur(8px);
 }
 @keyframes text-shadow {
   0% ,
