@@ -19,7 +19,7 @@ posts.push({
     description: ":D",
     author: "SeaMite43981045",
     tags: ["link"],
-    content: await (await fetch('/post/post/00.md')).text()
+    content: '/post/post/00.md'
 })
 posts.push({
     id: "000000000001",
@@ -29,7 +29,7 @@ posts.push({
     description: "尽力了...",
     author: "SeaMite43981045",
     tags: ["project", "code"],
-    content: await (await fetch('/post/post/01.md')).text()
+    content: '/post/post/01.md'
 })
 posts.push({
     id: "000000000002",
@@ -39,7 +39,7 @@ posts.push({
     description: "从零开始学习 Spigot",
     author: "SeaMite43981045",
     tags: ["project", "code", "Spigot", "Minecraft"],
-    content: await (await fetch('/post/post/02.md')).text()
+    content: '/post/post/02.md'
 })
 
 export default posts;

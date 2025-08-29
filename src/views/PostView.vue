@@ -12,7 +12,10 @@ import hljs from 'highlight.js/lib/common';
 import mermaidMarkdownIt from 'mermaid-it-markdown';
 import CommentComponent from '../components/CommentComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
 
+const route = useRoute();
 const markdownIt = new MarkdownIt({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {
@@ -27,6 +30,31 @@ const markdownIt = new MarkdownIt({
   }
 });
 
+const id = ref('');
+const title = ref('');
+const content = ref('');
+const avatar = ref('');
+const description = ref('');
+const author = ref('');
+const create_time = ref('');
+const tags = ref<string[]>([]);
+
+for (let i = 0; i < posts.length; i++) {
+  const post = posts[i];
+  console.log(route.params.id + ", " + post.id);
+  if (post.id == route.params.id) {
+    id.value = post.id;
+    title.value = post.title;
+    avatar.value = post.avatar;
+    description.value = post.description;
+    author.value = post.author;
+    create_time.value = post.create_time;
+    tags.value = post.tags;
+    content.value = await (await fetch(post.content)).text();
+    break;
+  }
+}
+
 markdownIt.use(mermaidMarkdownIt);
 </script>
 
@@ -34,30 +62,26 @@ markdownIt.use(mermaidMarkdownIt);
     <div class="startup"></div>
     <div class="container">
       <n-scrollbar style="max-height: 100vh;">
-        <div v-for="(post, key) in posts" :key="key">
-          <div v-if="post.id == $route.params.id">
-            <n-flex class="post-bg" justify="center" align="start">
-              <n-flex class="post-page" justify="center" align="start" vertical>
-                <router-link to="/" class="post-home-link">&lt; 返回主页</router-link>
-                <n-flex justify="space-around">
-                  <n-flex class="post-content-container" vertical justify="start">
-                        <n-text class="post-title">{{ post.title }}</n-text>
-                        <div class="post-content" v-html="markdownIt.render(post.content)"></div>
-                  </n-flex>
-                  <n-flex class="post-props" vertical justify="start">
-                    <n-avatar :src="post.avatar" :size="128"/>
-                    <n-text class="post-item-description">{{ post.description }}</n-text>
-                    <n-text class="post-props-text-info">作者：{{ post.author }}</n-text>
-                    <n-text class="post-props-text-info">创建日期：{{ post.create_time }}</n-text>
-                    <n-text class="post-props-text-info">标签：<n-tag :bordered="false" type="info" class="post-item-tag" v-for="(tag, index) in post.tags" :key="index">{{ tag }}</n-tag></n-text>
-                  </n-flex>
+          <n-flex class="post-bg" justify="center" align="start">
+            <n-flex class="post-page" justify="center" align="start" vertical>
+              <router-link to="/" class="post-home-link">&lt; 返回主页</router-link>
+              <n-flex justify="space-around">
+                <n-flex class="post-content-container" vertical justify="start">
+                      <n-text class="post-title">{{ title }}</n-text>
+                      <div class="post-content" v-html="markdownIt.render(content)"></div>
+                </n-flex>
+                <n-flex class="post-props" vertical justify="start">
+                  <n-avatar :src="avatar" :size="128"/>
+                  <n-text class="post-item-description">{{ description }}</n-text>
+                  <n-text class="post-props-text-info">作者：{{ author }}</n-text>
+                  <n-text class="post-props-text-info">创建日期：{{ create_time }}</n-text>
+                  <n-text class="post-props-text-info">标签：<n-tag :bordered="false" type="info" class="post-item-tag" v-for="(tag, index) in tags" :key="index">{{ tag }}</n-tag></n-text>
                 </n-flex>
               </n-flex>
-            <comment-component :id="post.id" />
             </n-flex>
-            <footer-component />
-          </div>
-        </div>
+          <comment-component :id="id" />
+          </n-flex>
+          <footer-component />
       </n-scrollbar>
     </div>
 </template>

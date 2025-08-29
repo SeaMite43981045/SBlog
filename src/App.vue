@@ -10,7 +10,9 @@ import MusicBoxComponent from './components/MusicBoxComponent.vue';
 <template>
   <n-config-provider :theme="darkTheme">
     <MusicBoxComponent />
-    <RouterView></RouterView>
+    <Suspense>
+      <RouterView></RouterView>
+    </Suspense>
   </n-config-provider>
 </template>
 
